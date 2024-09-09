@@ -10,6 +10,9 @@ public partial class MudHtmlToolbarOptions
     [CascadingParameter]
     private MudHtmlToolbarOptions? DefaultOptions { get; set; }
 
+    [CascadingParameter]
+    private MudHtmlEditor? Editor { get; set; }
+
     /// <summary>
     /// If <see langword="true"/>, the toolbar will include the option to select different headings and paragraph styles.
     /// </summary>
@@ -112,6 +115,12 @@ public partial class MudHtmlToolbarOptions
     [Parameter]
     public bool? HorizontalRule { get; set; }
 
+    /// <summary>
+    /// If <see langword="true"/>, the toolbar will include the option of viewing the html.
+    /// </summary>
+    [Parameter]
+    public bool? HTMLToggle { get; set; }
+
     private static bool Show(params bool?[] options) => options.Any(o => o is not false);
 
     protected override void OnInitialized()
@@ -135,6 +144,7 @@ public partial class MudHtmlToolbarOptions
             Blockquote ??= DefaultOptions.Blockquote;
             CodeBlock ??= DefaultOptions.CodeBlock;
             HorizontalRule ??= DefaultOptions.HorizontalRule;
+            HTMLToggle ??= DefaultOptions.HTMLToggle;
         }
     }
 }

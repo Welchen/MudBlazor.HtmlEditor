@@ -2,12 +2,17 @@
     <div @ref="_toolbar">
         @if (ChildContent is null)
         {
-            <MudHtmlToolbarOptions />
+            <CascadingValue Value="@this">
+                <MudHtmlToolbarOptions />
+            </CascadingValue>
         }
         else
         {
             @ChildContent
         }
     </div>
-    <div class="@(Resizable ? "is-resizable" : "")" @ref="_editor"></div>
+
+    <div hidden="@(!EditMode)" class="@(Resizable ? "is-resizable" : "")" @ref="_editor"></div>
+
+    <textarea hidden="@EditMode" class="html-viewer @(Outlined ? "is-outlined" : "") @(Resizable ? "is-resizable" : "")" @bind="@Html"></textarea>
 </div>

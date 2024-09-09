@@ -304,3 +304,11 @@
     .html-editor .ql-tooltip a.ql-action::after {
         border-right-color: var(--mud-palette-divider);
     }
+
+.html-viewer {
+    border-color: var(--mud-palette-lines-inputs);
+}
+
+    .html-viewer.is-outlined {
+        border-width: 1px;
+    }

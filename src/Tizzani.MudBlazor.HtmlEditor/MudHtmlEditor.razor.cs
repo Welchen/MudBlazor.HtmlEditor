@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Components.Web;
 using Microsoft.JSInterop;
 
 namespace Tizzani.MudBlazor.HtmlEditor;
@@ -39,6 +40,8 @@ public sealed partial class MudHtmlEditor : IAsyncDisposable
 
     [Parameter(CaptureUnmatchedValues = true)]
     public IDictionary<string, object?>? UserAttributes { get; set; }
+
+    private bool EditMode { get; set; } = true;
 
     public async Task Reset()
     {
@@ -81,6 +84,15 @@ public sealed partial class MudHtmlEditor : IAsyncDisposable
 
             StateHasChanged();
         }
+    }
+
+    public async void ToggleMode(MouseEventArgs e)
+    {
+        EditMode = !EditMode;
+
+        await SetHtml(Html);
+
+        StateHasChanged();
     }
 
     [JSInvokable]
