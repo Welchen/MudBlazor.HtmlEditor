@@ -65,6 +65,10 @@ public sealed partial class MudHtmlEditor : IAsyncDisposable
     [Parameter(CaptureUnmatchedValues = true)]
     public IDictionary<string, object?>? UserAttributes { get; set; }
 
+    /// <summary>
+    /// Whether or not the editor is displaying html or the content. Default value is <see langword="false" />.
+    /// </summary>
+    private bool DisplayHTML { get; set; }
 
     /// <summary>
     /// Clears the content of the editor.
@@ -123,9 +127,13 @@ public sealed partial class MudHtmlEditor : IAsyncDisposable
         }
     }
 
-    public async void ToggleMode(MouseEventArgs e)
+    /// <summary>
+    /// Toggles wether the editor is displaying HTML or the content.
+    /// </summary>
+    /// <param name="e"></param>
+    public async void ToggleMode()
     {
-        EditMode = !EditMode;
+        DisplayHTML = !DisplayHTML;
 
         await SetHtml(Html);
 

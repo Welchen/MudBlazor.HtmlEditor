@@ -12,7 +12,7 @@
         }
     </div>
 
-    <div hidden="@(!EditMode)" class="@(Resizable ? "is-resizable" : "")" @ref="_editor"></div>
+    <div hidden="@DisplayHTML" class="@(Resizable ? "is-resizable" : "")" @ref="_editor"></div>
 
-    <textarea hidden="@EditMode" class="html-viewer @(Outlined ? "is-outlined" : "") @(Resizable ? "is-resizable" : "")" @bind="@Html"></textarea>
+    <textarea hidden="@(!DisplayHTML)" class="html-viewer @(Outlined ? "is-outlined" : "") @(Resizable ? "is-resizable" : "")" @bind="@Html"></textarea>
 </div>
